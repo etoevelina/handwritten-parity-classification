@@ -1,0 +1,11 @@
+{
+  "accuracy": 0.8333333333333334,
+  "precision": 1.0,
+  "recall": 0.6666666666666666,
+  "f1": 0.8,
+  "tag": "plain",
+  "augmentation": false,
+  "latency_ms": 5.14481041000181,
+  "device": "cpu",
+  "epochs_ran": 46
+}
