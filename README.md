@@ -1,6 +1,6 @@
 # Handwritten Number Parity Classification
 
-Assignment 2 continues the original even/odd handwritten digit project. The reconstructed repository preserves the supplied dataset and legacy Logistic Regression/CNN artifacts, then adds a compact SE-ResNet, advanced augmentation, Grad-CAM explainability, an ablation experiment, latency measurement, and a camera-friendly web demo.
+Assignment 2 continues the original even/odd handwritten digit project. This repository keeps the original dataset and the Assignment 1 Logistic Regression/CNN artifacts, then adds a compact SE-ResNet, advanced augmentation, Grad-CAM explainability, an ablation experiment, latency measurement, and a camera-friendly web demo.
 
 ## Results
 
@@ -9,10 +9,10 @@ See `artifacts/comparison.csv` for the measured results on the unchanged 30-imag
 ## Project layout
 
 - `data/`: original train/validation/test split (138/30/30 images)
-- `legacy/`: supplied Assignment 1 models, figures, results, and report
+- `legacy/`: Assignment 1 models, figures, results, and report
 - `src/`: model, data pipeline, inference, and Grad-CAM code
 - `train.py`: reproducible SE-ResNet training and augmentation ablation
-- `evaluate_baseline.py`: evaluation of the supplied Logistic Regression model
+- `evaluate_baseline.py`: evaluation of the Assignment 1 Logistic Regression model
 - `app.py`: FastAPI upload/camera demo
 - `artifacts/`: weights, metrics, curves, confusion matrices, and Grad-CAM examples
 - `docs/`: report and demo-video script
