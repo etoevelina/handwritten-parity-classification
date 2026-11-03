@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Handwritten Parity Explorer</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <main>
+    <p class="eyebrow">Computer Vision Assignment 2</p>
+    <h1>Handwritten parity explorer</h1>
+    <p class="intro">Upload a handwritten digit or take a photo. The SE-ResNet predicts even or odd and Grad-CAM shows which strokes influenced the result.</p>
+    <form action="/predict" method="post" enctype="multipart/form-data">
+      <label for="image">Digit image</label>
+      <input id="image" name="image" type="file" accept="image/*" capture="environment" required>
+      <button type="submit">Analyse image</button>
+    </form>
+    {% if result %}
+    <section class="result">
+      <div class="metric"><span>Prediction</span><strong>{{ result.label|upper }}</strong></div>
+      <div class="metric"><span>Confidence</span><strong>{{ "%.1f"|format(result.confidence * 100) }}%</strong></div>
+      <div class="metric"><span>Latency</span><strong>{{ "%.1f"|format(result.latency_ms) }} ms</strong></div>
+    </section>
+    <section class="images">
+      <figure><img src="data:image/png;base64,{{ source }}" alt="Uploaded digit"><figcaption>Input</figcaption></figure>
+      <figure><img src="data:image/png;base64,{{ heatmap }}" alt="Grad-CAM heatmap"><figcaption>Grad-CAM explanation</figcaption></figure>
+    </section>
+    <p class="prob">Even {{ "%.1f"|format(result.probabilities.even * 100) }}% · Odd {{ "%.1f"|format(result.probabilities.odd * 100) }}%</p>
+    {% endif %}
+    <footer>Educational demo. Predictions may fail on unclear, cropped, or out-of-distribution handwriting.</footer>
+  </main>
+</body>
+</html>
