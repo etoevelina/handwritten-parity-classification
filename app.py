@@ -24,7 +24,7 @@ predictor = ParityPredictor(WEIGHTS)
 
 @app.get("/", response_class=HTMLResponse)
 async def index(request: Request):
-    return templates.TemplateResponse("index.html", {"request": request})
+    return templates.TemplateResponse(request, "index.html")
 
 
 @app.post("/predict", response_class=HTMLResponse)
@@ -34,5 +34,5 @@ async def predict(request: Request, image: UploadFile = File(...)):
     result = predictor.predict(pil)
     source = base64.b64encode(image_to_png_bytes(pil)).decode()
     heatmap = base64.b64encode(image_to_png_bytes(result["overlay"])).decode()
-    context = {"request": request, "result": result, "source": source, "heatmap": heatmap}
-    return templates.TemplateResponse("index.html", context)
+    context = {"result": result, "source": source, "heatmap": heatmap}
+    return templates.TemplateResponse(request, "index.html", context)

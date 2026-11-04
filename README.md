@@ -2,6 +2,8 @@
 
 Assignment 2 continues the original even/odd handwritten digit project. This repository keeps the original dataset and the Assignment 1 Logistic Regression/CNN artifacts, then adds a compact SE-ResNet, advanced augmentation, Grad-CAM explainability, an ablation experiment, latency measurement, and a camera-friendly web demo.
 
+made by Evelina and Birkhanym
+
 ## Results
 
 See `artifacts/comparison.csv` for the measured results on the unchanged 30-image test set. Because the dataset is very small (198 images total), results should be reported with the exact split and not generalized to all handwriting.
